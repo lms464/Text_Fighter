@@ -9,7 +9,9 @@
 using namespace std;
 
 //TODO make combat a class
-
+//TODO how does def and str play?
+//TODO change Zombie &zombie into Monster and &monster
+//TODO special monster attacks based on "dice roll"
 void combat(Player &player, Zombie &zombie) {
 	while (player.get_hp()>0 && zombie.get_hp()>0) {
 
@@ -17,15 +19,21 @@ void combat(Player &player, Zombie &zombie) {
 		cout << "Will you:" << endl;
 		cout << "fight, run, or check stats?" << endl;
 		cin >> action;
-
+		//convert each turn into a while loop of actions
 		if (action == "stats") {
 			player.get_stats();
 			cout << "Will you:" << endl;
 			cout << "fight, run, or heal?" << endl;
 			cin >> action;
 			if (action == "heal") {
-				player.heal();
-				action = "fight";
+				if (player.get_heals() <= 0) {
+					cout << "You are out of heals!" << endl;
+					action = "fight";
+				}
+				else {
+					player.heal();
+					action = "fight";
+				}
 			}
 		}
 
@@ -68,7 +76,7 @@ void combat(Player &player, Zombie &zombie) {
 				cout << "SPD: "<< zombie.get_spd() << endl;
 				cout << "STR: "<< zombie.get_str() << endl;
 				cout << endl;
-				
+
 				// player attacks first
 				cout  << "You swings at the zombie."<<endl;
 				cout << endl;
@@ -94,110 +102,4 @@ void combat(Player &player, Zombie &zombie) {
 	}
 	zombie.createZombie();
 	sleep(1);
-
-
 };
-
-
-// Old combat system
-/*void fight(Player &player, Zombie &zombie) {
-	int zombiesKilled = 0;
-//main game loop
-    while (player.get_alive()==true && (player.get_fight() + player.get_flight()) < zombie.get_zombieCount() && player.get_hp() > 0) {
-    	string fightFlight;
-    	int zombieSkill = zombie.createZombie();
-
-    	//playerHp = player.get_hp();
-
-    	if (player.get_hp() < player.get_initHp()/2) {
-    		player.set_str( player.get_str() - 2);
-    		player.set_spd( player.get_str() - 3);
-    	}
-
-    	//battle sequence
-
-    	if  (zombieSkill > 10) {
-    		cout << endl << "Here comes a huge zombie!" << endl;
-    	} 
-
-    	else {
-    		cout<<endl<< "Here comes zombie "<< (player.get_fight() + player.get_flight())+1<<endl;
-    	}
-
-    	cout << "Will you fight or run? "<< endl;
-    	cout << "stats for your current stats" << endl;
-    	cin >> fightFlight;
-
-    	if (fightFlight == "stats") {
-    		player.get_stats();
-    		cout << "Will you fight or run? "<< endl;
-    		cin >> fightFlight;
-    		cout << endl;
-    	}
-
-    	if (fightFlight == "run") {
-
-    		if (player.get_spd() >= zombieSkill) {
-    			cout << "Running from the zombie"<< endl;
-    			fightFlight = "";
-    			//zombiesKilled++;
-    			player.set_flight();
-    			zombie.update_zombieCount();
-    			continue;
-    		}
-
-    		else {
-    			cout << "Could not run from the zombie." << endl;
-    			fightFlight = "fight";
-    		}
-    	}
-
-    	if (fightFlight == "fight" ) {
-
-	    	cout << "Fighting..."<< endl;
-
-	    	sleep(2);
-
-	    	if (player.get_str() < zombieSkill) {
-	    		player.set_alive(false);
-	    		player.set_hp(0);
-	    		cout << "You have died." << endl;
-	    		cout << endl;
-	    	} 
-
-	    	else {
-
-	    		if (player.get_str() - zombieSkill > 7) {
-	    			cout << "You wasted the zombie!" << endl;
-	    			cout << endl;
-	    			player.set_score(2);
-	    		} 
-
-	    		else if (player.get_str() - zombieSkill > 5) {
-	    			cout << "You decapitated teh zombie!" << endl;
-	    			cout << endl;
-	    			player.set_score(2);
-	    		} 
-
-	    		else if (player.get_str() - zombieSkill > 0) {
-	    			cout << "You killed the zombie!" << endl;
-	    			cout << endl;
-	    			player.set_score(2);
-	    			player.set_hp(player.get_hp() - 1);
-	    		} 
-
-	    		else {
-	    			cout << "You killed the zombie, but suffered injuries." << endl;
-	    			cout << endl;
-	    			player.set_hp(player.get_hp() - 2);
-	    		}
-	    		zombiesKilled = player.get_fight()+player.get_flight();
-	    		player.set_fight();
-	    		zombie.update_zombieCount();
-	    	}
-    	}
-
-    	cout << endl;
-    	sleep(1);
-    }
-}*/

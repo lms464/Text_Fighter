@@ -5,7 +5,7 @@ using namespace std;
 
 Zombie::Zombie () {
 	createZombie();
-}
+};
 
 void Zombie::createZombie() {
 
@@ -14,7 +14,7 @@ void Zombie::createZombie() {
 	} else {
 		zombieSkill = rand() % 10 +1;
 	}
-	instantiate_hp();
+	set_stats();
 };
 
 void Zombie::instantiate_hp() {
@@ -22,57 +22,13 @@ void Zombie::instantiate_hp() {
 	mHp_init = mHp;
 };
 
-void Zombie::update_hp(int hp) {
-	mHp = mHp - hp;
-}
-
-int Zombie::get_hp() {
-	return mHp;
+void Zombie::set_stats() {
+	instantiate_hp();
+	mSpd = 1;
+	mAtk = 5;
+	mDef = 0;
 };
 
-int Zombie::get_spd() {
-	return mSpd;
-}
-
-int Zombie::get_str() {
-	return mAtk;
-}
-/*Zombie::Zombie() {
-	createZombie();
-}
-
-int Zombie::createZombie() {
-
-	if (rand() %67 < 10) {
-		zombieSkill = 11;
-	} else {
-		zombieSkill = rand() % 10 +1;
-	}
-}
-int Zombie::get_zombieCount() {
-	return zombieCount;
-}
-int Zombie::zombies_left() {
-	return zombiesLeft;
-}
-void Zombie::set_hp(int hp) {
-	zombieHp = hp;
-}
-int Zombie::get_spd(){
-	return zombieSpd;
-}
-int Zombie::get_hp() {
-	return zombieHp;
-}
-void Zombie::set_zombieCount(int z) {
-	zombieCount = z;
-	zombiesLeft = z;
-}
-void Zombie::update_zombieCount() {
-	zombiesLeft = zombiesLeft - 1;
-}
-void Zombie::spawn() {
-	if (zombieHp==0 && zombiesLeft > 0) {
-		zombieHp = 3;
-	}
-}*/
+void Zombie::update_hp(int hp) {
+	mHp = mHp - hp;
+};

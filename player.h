@@ -15,6 +15,7 @@ class Player {
 		int get_fight();
 		int get_flight();
 		int get_diffHp();
+		int get_heals();
 		void heal();
 
 		void set_alive(int tf);
@@ -33,8 +34,9 @@ class Player {
 		int playerHp_init = (playerSkill) - 3;
 		int playerAlive = true;
 		int playerScore = 1;
-		int fight=0;
-		int flight=0;
+		int fight = 0;
+		int flight = 0;
+		int heals = 3;
 		// TODO implemnt status ailment for player and zombie
 		string status_ailment;
 		string equipment;

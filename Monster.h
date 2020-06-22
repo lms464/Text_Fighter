@@ -11,6 +11,10 @@ class Monster {
 		void set_numMonster(int n);
 		void update_numMonster();
 		int get_monsters_left();
+		int get_str();
+		int get_def();
+		int get_hp();
+		int get_spd();
 		//int get_hp();
 	protected:
 		int mAtk;

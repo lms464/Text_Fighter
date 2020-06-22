@@ -13,17 +13,30 @@ int Monster::m_get_species(int m){
 		mSpecies = rand() % 11	;
 	}
 	mSpecies = m;
-}
+};
 
 void Monster::set_numMonster(int n) {
 	numMonster = n;
 	numMonsterLeft = n;
-}
+};
 
 void Monster::update_numMonster() {
 	numMonsterLeft = numMonsterLeft - 1;
-}
+};
 
 int Monster::get_monsters_left() {
 	return numMonsterLeft;
-}
+};
+
+int Monster::get_str() {
+	return mAtk;
+};
+int Monster::get_def() {
+	return mDef;
+};
+int Monster::get_spd() {
+	return mSpd;
+};
+int Monster::get_hp() {
+	return mHp;
+};

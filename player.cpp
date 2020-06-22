@@ -32,8 +32,11 @@ int Player::get_flight() {
 int Player::get_diffHp() {
 	return playerHp_init - playerHp;
 }
+int Player::get_heals() {
+	return heals;
+}
 void Player::set_hp(int hp) {
-	playerHp = hp;
+	playerHp = playerHp - hp;
 }
 void Player::set_str(int str) {
 	playerStr = str;
@@ -55,6 +58,7 @@ void Player::set_fight() {
 }
 void Player::heal() {
 	playerHp = playerHp_init;
+	heals = heals - 1;
 }
 void Player::get_stats() {
     cout << "HP: " << playerHp << endl;
