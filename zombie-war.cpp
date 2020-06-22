@@ -41,14 +41,14 @@ int main() {
 
     cout << "Get ready to fight for your life, " << playerName << "!" << endl;
 
-    zombie.set_zombieCount(zombieCount);
+    zombie.set_numMonster(zombieCount);
 
     //fight(player, zombie);
-    while (player.get_alive() == true && zombie.zombies_left() > 0) {
+    while (player.get_alive() == true && zombie.get_monsters_left() > 0) {
     	combat(player, zombie);
 	}
     // end game
-    if ((player.get_fight() + player.get_flight()) == zombie.get_zombieCount()) {
+    if ((player.get_fight() + player.get_flight()) == zombie.get_monsters_left()) {
     	//victory
     	cout << "You have survived the onslaught!" << endl;
     }

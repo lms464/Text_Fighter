@@ -5,7 +5,6 @@ using namespace std;
 
 Zombie::Zombie () {
 	createZombie();
-	instantiate_hp();
 }
 
 void Zombie::createZombie() {
@@ -15,21 +14,29 @@ void Zombie::createZombie() {
 	} else {
 		zombieSkill = rand() % 10 +1;
 	}
+	instantiate_hp();
 };
 
 void Zombie::instantiate_hp() {
-	mHp = (int) sqrt(zombieSkill)+ (rand() + 1); // 2 - 4
+	mHp = sqrt(zombieSkill) + (rand()%3 ); // 2 - 4
 	mHp_init = mHp;
 };
 
 void Zombie::update_hp(int hp) {
-	mHp = mHp - hp
+	mHp = mHp - hp;
 }
 
 int Zombie::get_hp() {
 	return mHp;
 };
 
+int Zombie::get_spd() {
+	return mSpd;
+}
+
+int Zombie::get_str() {
+	return mAtk;
+}
 /*Zombie::Zombie() {
 	createZombie();
 }

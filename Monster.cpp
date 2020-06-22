@@ -15,6 +15,15 @@ int Monster::m_get_species(int m){
 	mSpecies = m;
 }
 
-int Monster::set_numMonster(int n) {
+void Monster::set_numMonster(int n) {
 	numMonster = n;
+	numMonsterLeft = n;
+}
+
+void Monster::update_numMonster() {
+	numMonsterLeft = numMonsterLeft - 1;
+}
+
+int Monster::get_monsters_left() {
+	return numMonsterLeft;
 }
