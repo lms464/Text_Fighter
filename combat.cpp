@@ -8,6 +8,25 @@
 #include "combat.h"
 using namespace std;
 
+
+void special_atk(Player &player, int special) {
+		if (special == 0 ) {
+			cout << "atk boost!" << endl;
+		}
+	
+		else if  (special == 2) {
+			cout << "You've been poisoned!" << endl;
+			int ail_len = rand() % 4;
+			player.set_ailment(special, ail_len);
+
+			// player status ailment
+		}
+
+/*		case 4: 
+			cout << "You've been put to sleep!" << endl;*/
+	
+};
+
 //TODO make combat a class
 //TODO how does def and str play?
 //TODO change Zombie &zombie into Monster and &monster
@@ -53,6 +72,7 @@ void combat(Player &player, Zombie &zombie) {
 		}
 		if (action == "fight") {
 
+			int rnum = (rand() % 20);
 
 			if (player.get_spd() < zombie.get_spd()) {
 
@@ -61,13 +81,19 @@ void combat(Player &player, Zombie &zombie) {
 				cout << "SPD: "<< zombie.get_spd() << endl;
 				cout << "STR: "<< zombie.get_str() << endl;
 				cout << endl;
-				
-				// zombie attacks first
-				cout << endl <<  "The Zombie swings at you."<<endl;
-				player.set_hp(player.get_hp() - 1);
-				cout << endl;
+	
+				if (rnum % 3 == 0) {
+					special_atk(player, zombie.get_spec());
+				}
+				else {
+					// zombie attacks first
+					cout << endl <<  "The Zombie swings at you."<<endl;
+					player.set_hp(player.get_hp() - 1);
+					cout << endl;
+				}
 				cout  << "You swings at the zombie."<<endl;
 				zombie.update_hp(1);
+				
 			} 
 			else {
 
@@ -81,10 +107,16 @@ void combat(Player &player, Zombie &zombie) {
 				cout  << "You swings at the zombie."<<endl;
 				cout << endl;
 				zombie.update_hp(1);
-				cout << endl <<  "The Zombie swings at you."<<endl;
-				player.set_hp(1);
+				if (rnum % 3 == 0) {
+					special_atk(player, zombie.get_spec());
+				}
+				else {
+					cout << endl <<  "The Zombie swings at you."<<endl;
+					player.set_hp(1);
+				}
 
 			}
+			player.update_ailment();
 			sleep(2);
 		}
 	}

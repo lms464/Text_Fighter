@@ -26,6 +26,10 @@ class Player {
 		void set_flight();
 		void set_fight();
 
+		void check_ailment();
+		void set_ailment(int special, int len);
+		void update_ailment();
+
  	private:
  		int playerSkill = rand() % 5 + 8 ;
 		int playerSpd = (playerSkill ) + (rand() % 7 -3);
@@ -38,6 +42,15 @@ class Player {
 		int flight = 0;
 		int heals = 3;
 		// TODO implemnt status ailment for player and zombie
-		string status_ailment;
+		int status_ailment = 0;
+		int ailment_len = 0; // how long ailment lasts
 		string equipment;
 };
+/*	negative ailment
+	2  - poison
+	4  - sleep
+	6  - drain
+	8  - paralize
+	10 - burn
+	12 - freeze
+*/

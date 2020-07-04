@@ -27,8 +27,14 @@ void Zombie::set_stats() {
 	mSpd = 1;
 	mAtk = 5;
 	mDef = 0;
+	special = 2;
+	mSpc = 0;
 };
 
 void Zombie::update_hp(int hp) {
 	mHp = mHp - hp;
+};
+
+int Zombie::bite() {
+	return special; //?!?!?!
 };

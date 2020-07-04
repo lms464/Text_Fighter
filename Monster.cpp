@@ -8,7 +8,7 @@
 	mSpecies = rand() % 11	;
 }*/
 
-int Monster::m_get_species(int m){
+void Monster::m_get_species(int m){
 	if (m > 10) {
 		mSpecies = rand() % 11	;
 	}
@@ -39,4 +39,12 @@ int Monster::get_spd() {
 };
 int Monster::get_hp() {
 	return mHp;
+};
+
+int Monster::get_spc_atk() {
+	return mSpc;
+};
+
+int Monster::get_spec() {
+	return special;
 };

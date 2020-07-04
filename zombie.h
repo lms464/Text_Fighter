@@ -9,7 +9,7 @@ class Zombie: public Monster {
 		void update_hp(int hp);
 		void instantiate_hp();
 		void set_stats();
-
+		int bite();
 	private:
 		int zombieCount;
 		int zombiesLeft;

@@ -60,9 +60,32 @@ void Player::heal() {
 	playerHp = playerHp_init;
 	heals = heals - 1;
 }
+
+void Player::set_ailment(int special, int len) {
+	status_ailment = special;
+	ailment_len = len;
+}
+
+void Player::update_ailment() {
+	if (ailment_len == 0 && status_ailment != 0) {
+		status_ailment = 0;
+	}
+	if (ailment_len != 0 && status_ailment != 0) {
+		check_ailment();
+		ailment_len = ailment_len - 1;
+	}
+}
+
+void Player::check_ailment() {
+	if (status_ailment == 2) {
+		playerHp = playerHp - 1;
+	}
+}
+
 void Player::get_stats() {
     cout << "HP: " << playerHp << endl;
 	cout << "SPD: " << playerSpd << endl;
     cout << "STR: " << playerStr  << endl;
+    cout << "Ailment" << status_ailment << endl;
     cout << endl;
 }
