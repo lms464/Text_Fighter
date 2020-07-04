@@ -34,6 +34,7 @@ int main() {
     cout << "Please enter your name: ";
     cin >> playerName;
 
+    player.set_name(playerName);
     //ask how many zombies
 
     cout << "How many zombies do you wish to fight? ";

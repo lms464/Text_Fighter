@@ -16,8 +16,8 @@ void special_atk(Player &player, int special) {
 	
 		else if  (special == 2) {
 			cout << "You've been poisoned!" << endl;
-			int ail_len = rand() % 4;
-			player.set_ailment(special, ail_len);
+			int ail_len = rand() % 4 +1;
+			player.set_ailment(special, ail_len + 1);
 
 			// player status ailment
 		}

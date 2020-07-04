@@ -82,6 +82,10 @@ void Player::check_ailment() {
 	}
 }
 
+void Player::set_name(string name) {
+	name = name;
+}
+
 void Player::get_stats() {
     cout << "HP: " << playerHp << endl;
 	cout << "SPD: " << playerSpd << endl;

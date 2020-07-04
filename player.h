@@ -18,6 +18,7 @@ class Player {
 		int get_heals();
 		void heal();
 
+		void set_name(string name);
 		void set_alive(int tf);
 		void set_hp(int hp);
 		void set_str(int str);
@@ -45,6 +46,7 @@ class Player {
 		int status_ailment = 0;
 		int ailment_len = 0; // how long ailment lasts
 		string equipment;
+		string name;
 };
 /*	negative ailment
 	2  - poison
