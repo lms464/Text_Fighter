@@ -3,9 +3,9 @@
 #include <unistd.h>
 #include <time.h>
 #include <ctype.h>
-#include "player.h"
-#include "zombie.h"
-#include "combat.h"
+#include "../include/player.h"
+#include "../include/zombie.h"
+#include "../include/combat.h"
 using namespace std;
 
 

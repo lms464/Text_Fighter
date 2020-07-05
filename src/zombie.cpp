@@ -1,4 +1,4 @@
-#include "zombie.h"
+#include "../include/zombie.h"
 #include <iostream>
 #include <math.h>       /* sqrt */
 using namespace std;
